@@ -20,6 +20,9 @@
                 <f:entry title="${%RetryDelaySeconds_title}" field="retryDelaySeconds">
                         <f:number min="0" max="300" default="5"/>
                 </f:entry>
+                <f:entry title="${%DisableDirectDownload_title}" field="disableDirectDownload">
+                        <f:checkbox/>
+                </f:entry>
                 <f:validateButton title="Validate Artifactory configuration" progress="Validate..." method="validateArtifactoryConfig"
                                   with="prefix,serverUrl,storageCredentialId,repository"/>
         </f:section>

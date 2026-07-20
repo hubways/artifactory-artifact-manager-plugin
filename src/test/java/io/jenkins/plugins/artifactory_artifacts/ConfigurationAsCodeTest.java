@@ -38,5 +38,18 @@ public class ConfigurationAsCodeTest extends BaseTest {
         assertThat(config.getPrefix(), is("jenkins/"));
         assertThat(config.getMaxUploadRetries(), is(0));
         assertThat(config.getRetryDelaySeconds(), is(0));
+        assertThat(config.getDisableDirectDownload(), is(false));
+    }
+
+    @Test
+    @ConfiguredWithCode("configuration-as-code-disable-direct-download.yml")
+    public void shouldSupportConfigurationAsCodeWithDisableDirectDownload(JenkinsConfiguredWithCodeRule jenkinsRule)
+            throws Exception {
+        ArtifactoryGenericArtifactConfig config = Utils.getArtifactConfig();
+        assertThat(config.getStorageCredentialId(), is("the-credentials-id"));
+        assertThat(config.getServerUrl(), is("http://localhost:7000"));
+        assertThat(config.getRepository(), is("my-generic-repo"));
+        assertThat(config.getPrefix(), is("jenkins/"));
+        assertThat(config.getDisableDirectDownload(), is(true));
     }
 }

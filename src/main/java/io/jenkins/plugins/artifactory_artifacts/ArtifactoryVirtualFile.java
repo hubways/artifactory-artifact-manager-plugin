@@ -73,6 +73,10 @@ public class ArtifactoryVirtualFile extends ArtifactoryAbstractVirtualFile {
     @CheckForNull
     @Override
     public URL toExternalURL() throws IOException {
+        ArtifactoryGenericArtifactConfig config = Utils.getArtifactConfig();
+        if (config != null && config.getDisableDirectDownload()) {
+            return null;
+        }
         return new URL(Utils.getUrl(this.key));
     }
 
