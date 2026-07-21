@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests for configurable retry mechanism in ArtifactoryGenericArtifactConfig.
+ * Tests for configurable retry mechanism and download settings in ArtifactoryGenericArtifactConfig.
  */
 public class ArtifactoryRetryConfigTest {
 
@@ -69,5 +69,22 @@ public class ArtifactoryRetryConfigTest {
 
         assertThat("Config should allow zero retry count", config.getMaxUploadRetries(), equalTo(0));
         assertThat("Config should allow zero retry delay", config.getRetryDelaySeconds(), equalTo(0));
+    }
+
+    @Test
+    public void shouldDefaultDisableDirectDownloadToFalse() {
+        ArtifactoryGenericArtifactConfig config = new ArtifactoryGenericArtifactConfig();
+
+        assertThat("disableDirectDownload should default to false", config.getDisableDirectDownload(), equalTo(false));
+    }
+
+    @Test
+    public void shouldAllowEnablingDisableDirectDownload() {
+        ArtifactoryGenericArtifactConfig config = new ArtifactoryGenericArtifactConfig();
+
+        config.setDisableDirectDownload(true);
+
+        assertThat(
+                "disableDirectDownload should be settable to true", config.getDisableDirectDownload(), equalTo(true));
     }
 }

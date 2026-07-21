@@ -48,6 +48,7 @@ public class ArtifactoryGenericArtifactConfig extends AbstractDescribableImpl<Ar
     private String prefix;
     private int maxUploadRetries = DEFAULT_MAX_UPLOAD_RETRIES;
     private int retryDelaySeconds = DEFAULT_RETRY_DELAY_SECONDS;
+    private boolean disableDirectDownload = false;
 
     @DataBoundConstructor
     public ArtifactoryGenericArtifactConfig() {}
@@ -60,6 +61,7 @@ public class ArtifactoryGenericArtifactConfig extends AbstractDescribableImpl<Ar
         this.prefix = prefix;
         this.maxUploadRetries = DEFAULT_MAX_UPLOAD_RETRIES;
         this.retryDelaySeconds = DEFAULT_RETRY_DELAY_SECONDS;
+        this.disableDirectDownload = false;
     }
 
     public ArtifactoryGenericArtifactConfig(
@@ -75,6 +77,7 @@ public class ArtifactoryGenericArtifactConfig extends AbstractDescribableImpl<Ar
         this.prefix = prefix;
         this.maxUploadRetries = maxUploadRetries;
         this.retryDelaySeconds = retryDelaySeconds;
+        this.disableDirectDownload = false;
     }
 
     public String getStorageCredentialId() {
@@ -129,6 +132,15 @@ public class ArtifactoryGenericArtifactConfig extends AbstractDescribableImpl<Ar
     @DataBoundSetter
     public void setRetryDelaySeconds(int retryDelaySeconds) {
         this.retryDelaySeconds = Math.max(0, retryDelaySeconds); // Minimum 0 seconds (no delay)
+    }
+
+    public boolean getDisableDirectDownload() {
+        return disableDirectDownload;
+    }
+
+    @DataBoundSetter
+    public void setDisableDirectDownload(boolean disableDirectDownload) {
+        this.disableDirectDownload = disableDirectDownload;
     }
 
     public static ArtifactoryGenericArtifactConfig get() {

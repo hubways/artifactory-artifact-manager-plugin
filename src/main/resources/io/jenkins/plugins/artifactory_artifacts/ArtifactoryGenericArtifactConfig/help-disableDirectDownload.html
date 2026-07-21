@@ -1,0 +1,15 @@
+<div>
+  <p>
+    When unchecked (default), artifact links in Jenkins redirect the browser directly to the Artifactory server.
+  </p>
+  <p>
+    When checked, Jenkins proxies all artifact downloads through itself, streaming each file from
+    Artifactory on behalf of the browser. Use this when Artifactory is on a private network not
+    reachable from users' browsers, or when you want Jenkins to be the single access point and
+    enforce its own authentication.
+  </p>
+  <p>
+    <strong>Note:</strong> with this option enabled, all download traffic passes through the Jenkins
+    controller, which may affect performance for large or frequently accessed artifacts.
+  </p>
+</div>

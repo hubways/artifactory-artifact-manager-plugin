@@ -1,0 +1,12 @@
+unclassified:
+  artifactManager:
+    artifactManagerFactories:
+      - artifactory:
+          config:
+            prefix: "jenkins/"
+            repository: "my-generic-repo"
+            serverUrl: "http://localhost:7000"
+            storageCredentialId: "the-credentials-id"
+            maxUploadRetries: 0
+            retryDelaySeconds: 0
+            disableDirectDownload: true
